@@ -7,6 +7,11 @@ new Vue({
     App
   },
   //render: h => h('div','test')
-  render: h => h('App')
+  //render: h => h('App')
+  template:'<App></App>',
+  // render(h){
+  //   return h('App')
 
-})
+  // }
+
+})//.$mount('#app')

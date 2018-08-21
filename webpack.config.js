@@ -10,6 +10,13 @@ const config = {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
   },
+  resolve:{
+    extensions:['*','.vue','.js','.jsx'],
+    alias:{
+      'vue$':'vue/dist/vue.common.js',
+      '@':path.resolve(__dirname, 'src/components')
+    }
+  },
   module: {
     rules: [
       {
