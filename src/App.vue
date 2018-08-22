@@ -1,7 +1,7 @@
 <template>
   <div>
     <header :class="$style.mainHeader">
-      <h1>Todo</h1>
+      <h1>Todo333222</h1>
     </header>
     
     <section :class="$style.realApp">
@@ -29,16 +29,18 @@
 </template>
 
 <script>
-import Item from '@/Item'
-import Tabs from '@/Tabs'
+import Item from "@/Item";
+import Tabs from "@/Tabs";
+
+console.log(Tabs.__docs);
 
 export default {
-  components:{
+  components: {
     Item,
     Tabs
   },
-  data(){
-    return{
+  data() {
+    return {
       todos: [
         // {
         //   content: '吃饭',
@@ -49,72 +51,74 @@ export default {
         //   isCompleted: true
         // }
       ],
-      filter: 'All'
-    }
-  },      
-  computed:{
-    leftItemsCount(){
-      return this.todos.reduce( (t,v) => v.isCompleted ? t : t + 1 , 0)
+      filter: "All"
+    };
+  },
+  computed: {
+    leftItemsCount() {
+      return this.todos.reduce((t, v) => (v.isCompleted ? t : t + 1), 0);
       //{
-        // if(!v.isCompleted){
-        //   t++
-        // }
-        // return t
+      // if(!v.isCompleted){
+      //   t++
+      // }
+      // return t
       //} )
     },
-    todosView(){
-      if(this.filter === 'All'){
-        return this.todos
-      } else if(this.filter === 'Active'){
-        return this.todos.filter( v => !v.isCompleted )
+    todosView() {
+      if (this.filter === "All") {
+        return this.todos;
+      } else if (this.filter === "Active") {
+        return this.todos.filter(v => !v.isCompleted);
       } else {
-        return this.todos.filter( v => v.isCompleted )
+        return this.todos.filter(v => v.isCompleted);
       }
     },
-    isHaveCompleted(){
-      return this.todos.some(v=>v.isCompleted)
+    isHaveCompleted() {
+      return this.todos.some(v => v.isCompleted);
     }
   },
-  methods:{
+  methods: {
     // addTodo(e){
     //   console.log(e.target.value)
     // },
-    addTodo(){
+    addTodo() {
       // console.log(this.$refs.ipt.value)
       this.todos.unshift({
-        content:this.$refs.ipt.value,
+        content: this.$refs.ipt.value,
         isCompleted: false
-      })
-      this.$refs.ipt.value = ""
+      });
+      this.$refs.ipt.value = "";
     },
-    changeCompleted(todo){
+    changeCompleted(todo) {
       //todo.isCompleted = !todo.isCompleted
-      this.todos[this.todos.indexOf(todo)].isCompleted = !this.todos[this.todos.indexOf(todo)].isCompleted
+      this.todos[this.todos.indexOf(todo)].isCompleted = !this.todos[
+        this.todos.indexOf(todo)
+      ].isCompleted;
     },
-    deletTodo(todo){
+    deletTodo(todo) {
       //this.todos.splice(this.todos.findIndex( item=> todo === item ),1)
-      this.todos = this.todos.filter( item => item !== todo)
+      this.todos = this.todos.filter(item => item !== todo);
     },
-    toggleFilter(filter){
-      this.filter = filter
+    toggleFilter(filter) {
+      this.filter = filter;
     },
-    clearCompleted(){
-      this.todos = this.todos.filter( item => !item.isCompleted )
+    clearCompleted() {
+      this.todos = this.todos.filter(item => !item.isCompleted);
     }
   },
   updated() {
-    localStorage.setItem('filter',this.filter)
-    localStorage.setItem('todos', JSON.stringify(this.todos))
+    localStorage.setItem("filter", this.filter);
+    localStorage.setItem("todos", JSON.stringify(this.todos));
   },
   created() {
-    if(localStorage.getItem('todos')){
-      this.todos = JSON.parse(localStorage.getItem('todos'))
+    if (localStorage.getItem("todos")) {
+      this.todos = JSON.parse(localStorage.getItem("todos"));
     }
-    if(localStorage.getItem('filter')){
-      this.filter = localStorage.getItem('filter')
+    if (localStorage.getItem("filter")) {
+      this.filter = localStorage.getItem("filter");
     }
-  },
-}
+  }
+};
 </script>
 
 <style lang="scss" module>
@@ -154,4 +158,5 @@ export default {
   }
 }
 </style>
+
 

@@ -1,3 +1,4 @@
+const docLoader = require.resolve("./doc-loader");
 module.exports = isDev => {
   return {
     extractCSS: !isDev,
@@ -8,6 +9,12 @@ module.exports = isDev => {
         ? "[path]-[name]-[hash:base64:5]"
         : "[hash:base64:5]",
       camelCase: true
-    }
+    },
+    loaders: {
+      docs: docLoader
+    },
+    preLoaders: {},
+    postLoaders: {}
+    // hotReload: false
   };
 };

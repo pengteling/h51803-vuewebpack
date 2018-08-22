@@ -14,33 +14,33 @@
       v-if="isHaveCompleted"
       @click="clearCompleted"
     >Clear Completed</span>
-
+    
   </div>
 </template>
 <script>
-import className from '../style/app.scss'
+import className from "../style/app.scss";
 export default {
   //template: '#tabs',
-  props:['leftItemsCount','filter','isHaveCompleted'],
-  data(){
+  props: ["leftItemsCount", "filter", "isHaveCompleted"],
+  data() {
     return {
-      states:['All', 'Active', 'Completed']
-    }
+      states: ["All", "Active", "Completed"]
+    };
   },
-  methods:{
-    toggleFilter(filter){
-      this.$emit('toggle-filter',filter)
+  methods: {
+    toggleFilter(filter) {
+      this.$emit("toggle-filter", filter);
     },
-    clearCompleted(){
-      this.$emit('clear-completed')
+    clearCompleted() {
+      this.$emit("clear-completed");
     }
   },
   mounted() {
-    console.log(className)
-    console.log(className.app)
-    console.log(className["app-header"])
-  },
-}
+    console.log(className);
+    console.log(className.app);
+    console.log(className["app-header"]);
+  }
+};
 </script>
 
 <style lang="scss">
@@ -66,3 +66,7 @@ export default {
   cursor: pointer;
 }
 </style>
+
+<docs>
+# 12345
+</docs>

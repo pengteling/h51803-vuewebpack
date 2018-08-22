@@ -1,6 +1,5 @@
 const path = require("path");
 const isDev = process.env.NODE_ENV === "development";
-const createVueLoaderConfig = require("./vue-loader.config");
 
 // console.log(isDev)
 const config = {
@@ -25,11 +24,11 @@ const config = {
       {
         test: /\.vue$/,
         loader: "vue-loader",
-        options: createVueLoaderConfig(isDev)
-        // options: {
-        //   //提取vue文件中的样式
-        //   extractCSS: !isDev
-        // }
+
+        options: {
+          //提取vue文件中的样式
+          extractCSS: !isDev
+        }
       },
       {
         test: /\.(jpg|png|jpeg|gif|svg)$/,
