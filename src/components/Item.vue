@@ -1,8 +1,8 @@
 <template>
   <div class="todo-item" :class="{'completed': todo.isCompleted}">
-    <input 
+    <input
       type="checkbox"
-      class="toggle"        
+      class="toggle"
       :value="todo.isCompleted"
       :checked="todo.isCompleted"
       @change="handlerClick"
@@ -53,4 +53,3 @@ export default {
   }
 }
 </style>
-
