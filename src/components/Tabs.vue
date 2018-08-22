@@ -2,19 +2,19 @@
   <div class="helper">
     <span class="left">{{leftItemsCount}} items left</span>
     <span class="tabs">
-      <span 
+      <span
         v-for="state in states"
         :class="{actived: filter === state}"
         @click="toggleFilter(state)"
         :key="state"
       >{{state}}</span>
     </span>
-    <span 
-      class="clear" 
+    <span
+      class="clear"
       v-if="isHaveCompleted"
       @click="clearCompleted"
     >Clear Completed</span>
-    
+
   </div>
 </template>
 <script>
