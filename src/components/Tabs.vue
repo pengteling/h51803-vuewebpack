@@ -18,6 +18,7 @@
   </div>
 </template>
 <script>
+import className from '../style/app.scss'
 export default {
   //template: '#tabs',
   props:['leftItemsCount','filter','isHaveCompleted'],
@@ -33,7 +34,12 @@ export default {
     clearCompleted(){
       this.$emit('clear-completed')
     }
-  }
+  },
+  mounted() {
+    console.log(className)
+    console.log(className.app)
+    console.log(className["app-header"])
+  },
 }
 </script>
 

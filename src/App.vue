@@ -1,11 +1,11 @@
 <template>
   <div>
-    <header class="main-header">
+    <header :class="$style.mainHeader">
       <h1>Todo</h1>
     </header>
     
-    <section class="real-app">
-      <input type="text" class="add-input" placeholder="接下来要做什么？" @keyup.enter="addTodo" ref="ipt">
+    <section :class="$style.realApp">
+      <input type="text" :class="$style.addInput" placeholder="接下来要做什么？" @keyup.enter="addTodo" ref="ipt">
       <!-- v-model="inpt" -->
       <item 
         v-for="(todo,index) in todosView" 
@@ -22,7 +22,7 @@
         @clear-completed="clearCompleted"
       />
     </section>  
-    <footer id="footer">
+    <footer :class="$style.footer">
       <span>written by Jacky</span>
     </footer>
   </div>
@@ -117,7 +117,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" module>
 .main-header {
   text-align: center;
   h1 {
@@ -127,11 +127,12 @@ export default {
     margin: 20px;
   }
 }
-#footer{
+.footer {
   margin-top: 40px;
   text-align: center;
   color: #bfbfbf;
-  font-size: 10px;text-shadow: 0 1px 0 rgba(#999,0.6);
+  font-size: 10px;
+  text-shadow: 0 1px 0 rgba(#999, 0.6);
 }
 .real-app {
   width: 640px;
