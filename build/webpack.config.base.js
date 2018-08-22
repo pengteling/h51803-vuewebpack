@@ -18,13 +18,18 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(js|vue|jsx)$/,
+        test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         exclude: /node_modules/,
         enforce: 'pre'
       },
       {
         test: /\.js$/,
+        loader: "babel-loader",
+        exclude: /node_modules/
+      },
+      {
+        test: /\.jsx$/,
         loader: "babel-loader",
         exclude: /node_modules/
       },

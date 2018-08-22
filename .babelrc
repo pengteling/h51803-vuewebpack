@@ -1,5 +1,10 @@
 {
   "presets": [
     "env"
+  ],
+  "plugins": [
+    "transform-vue-jsx",
+    "jsx-v-model",
+    "jsx-vue-functional"
   ]
 }

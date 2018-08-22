@@ -31,6 +31,9 @@
 <script>
 import Item from '@/Item'
 import Tabs from '@/Tabs'
+const data1 = {
+  name: 'zs'
+}
 
 console.log(Tabs.__docs)
 
@@ -51,7 +54,8 @@ export default {
         //   isCompleted: true
         // }
       ],
-      filter: 'All'
+      filter: 'All',
+      data1: data1
     }
   },
   computed: {
