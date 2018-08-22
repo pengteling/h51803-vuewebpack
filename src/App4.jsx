@@ -1,11 +1,11 @@
 export default {
-  data(){
+  data () {
     return {
-      msg :123,
-      checkedNames:[]
+      msg: 123,
+      checkedNames: []
     }
   },
-  render(){
+  render () {
     // return h('div',"test")
     return (
       <div>

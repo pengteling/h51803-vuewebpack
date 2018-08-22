@@ -3,13 +3,13 @@
     <header :class="$style.mainHeader">
       <h1>Todo333222</h1>
     </header>
-    
+
     <section :class="$style.realApp">
       <input type="text" :class="$style.addInput" placeholder="接下来要做什么？" @keyup.enter="addTodo" ref="ipt">
       <!-- v-model="inpt" -->
-      <item 
-        v-for="(todo,index) in todosView" 
-        :key="index" 
+      <item
+        v-for="(todo,index) in todosView"
+        :key="index"
         :todo="todo"
         @change-completed="changeCompleted"
         @delete-todo="deletTodo"
@@ -21,7 +21,7 @@
         @toggle-filter="toggleFilter"
         @clear-completed="clearCompleted"
       />
-    </section>  
+    </section>
     <footer :class="$style.footer">
       <span>written by Jacky</span>
     </footer>
@@ -160,5 +160,3 @@ export default {
   }
 }
 </style>
-
-

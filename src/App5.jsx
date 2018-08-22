@@ -1,8 +1,8 @@
 import className from './App5.scss'
 const Child = {
-  name:'Child',
-  props:['name'],
-  render(){
+  name: 'Child',
+  props: ['name'],
+  render () {
     return (
       <div class={className.child}>
         <h2> Child component - {this.name}</h2>
@@ -15,7 +15,7 @@ export default {
   // components:{
   //   Child
   // },
-  render(){
+  render () {
     return (
       <Child name="zs"></Child>
     )

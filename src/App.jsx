@@ -1,13 +1,13 @@
 const data1 = {
-  name : 'zs'
+  name: 'zs'
 }
 export default {
-  data(){
+  data () {
     return {
-      msg :123
+      msg: 123
     }
   },
-  render(){
+  render () {
     // return h('div',"test")
     return (
       <div>

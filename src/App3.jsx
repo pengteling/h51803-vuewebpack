@@ -1,16 +1,16 @@
 export default {
-  data(){
+  data () {
     return {
-      msg :123,
+      msg: 123,
       show: true
     }
   },
-  methods:{
-    handlerClick(){
-      console.log("clicked")
+  methods: {
+    handlerClick () {
+      console.log('clicked')
     }
   },
-  render(){
+  render () {
     // return h('div',"test")
     return (
       <div>
