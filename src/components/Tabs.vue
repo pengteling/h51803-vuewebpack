@@ -13,7 +13,7 @@
       class="clear" 
       v-if="isHaveCompleted"
       @click="clearCompleted"
-    >Clear Completed</span>
+    >Clear Completed</span>    
     
   </div>
 </template>
@@ -68,5 +68,5 @@ export default {
 </style>
 
 <docs>
-# 12345
+  # 12345
 </docs>

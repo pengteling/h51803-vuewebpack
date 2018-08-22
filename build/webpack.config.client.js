@@ -1,13 +1,13 @@
-const path = require("path");
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const isDev = process.env.NODE_ENV === "development";
-const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
+const path = require("path")
+const webpack = require("webpack")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const isDev = process.env.NODE_ENV === "development"
+const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin")
 // console.log(isDev)
-const merge = require("webpack-merge");
-const baseConfig = require("./webpack.config.base");
+const merge = require("webpack-merge")
+const baseConfig = require("./webpack.config.base")
 
-let config;
+let config
 const defaultOptions = {
   plugins: [
     new HtmlWebpackPlugin({
@@ -22,7 +22,7 @@ const defaultOptions = {
       }
     })
   ]
-};
+}
 
 if (isDev) {
   //开发者模式
@@ -70,7 +70,7 @@ if (isDev) {
         }
       ]
     }
-  });
+  })
 } else {
   //生产模式
   config = merge(baseConfig, defaultOptions, {
@@ -120,7 +120,7 @@ if (isDev) {
         }
       ]
     }
-  });
+  })
 }
 
-module.exports = config;
+module.exports = config

@@ -1,4 +1,4 @@
-const docLoader = require.resolve("./doc-loader");
+const docLoader = require.resolve("./doc-loader")
 module.exports = isDev => {
   return {
     extractCSS: !isDev,
@@ -11,7 +11,7 @@ module.exports = isDev => {
       camelCase: true
     },
     loaders: {
-      docs: docLoader
+      'docs': docLoader
     },
     preLoaders: {},
     postLoaders: {}
