@@ -18,29 +18,29 @@
   </div>
 </template>
 <script>
-import className from "../style/app.scss";
+import className from '../style/app.scss'
 export default {
-  //template: '#tabs',
-  props: ["leftItemsCount", "filter", "isHaveCompleted"],
-  data() {
+  // template: '#tabs',
+  props: ['leftItemsCount', 'filter', 'isHaveCompleted'],
+  data () {
     return {
-      states: ["All", "Active", "Completed"]
-    };
-  },
-  methods: {
-    toggleFilter(filter) {
-      this.$emit("toggle-filter", filter);
-    },
-    clearCompleted() {
-      this.$emit("clear-completed");
+      states: ['All', 'Active', 'Completed']
     }
   },
-  mounted() {
-    console.log(className);
-    console.log(className.app);
-    console.log(className["app-header"]);
+  methods: {
+    toggleFilter (filter) {
+      this.$emit('toggle-filter', filter)
+    },
+    clearCompleted () {
+      this.$emit('clear-completed')
+    }
+  },
+  mounted () {
+    console.log(className)
+    console.log(className.app)
+    console.log(className['app-header'])
   }
-};
+}
 </script>
 
 <style lang="scss">

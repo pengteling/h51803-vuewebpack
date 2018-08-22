@@ -18,13 +18,20 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.(js|vue|jsx)$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+        enforce: 'pre'
+      },
+      {
         test: /\.js$/,
-        loader: "babel-loader"
+        loader: "babel-loader",
+        exclude: /node_modules/
       },
       {
         test: /\.vue$/,
         loader: "vue-loader",
-
+        exclude: /node_modules/,
         options: {
           //提取vue文件中的样式
           extractCSS: !isDev
