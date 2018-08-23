@@ -9,8 +9,12 @@
   "env": {
     "browser": true
   },
-  "parserOptions":{
-    "parser": "babel-eslint"
+  "parserOptions": {
+    "parser": "babel-eslint",
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
   }
-
 }
