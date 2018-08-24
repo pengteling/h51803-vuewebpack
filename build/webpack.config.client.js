@@ -34,9 +34,9 @@ if (isDev) {
       port: 8080,
       host: "0.0.0.0",
       hot: true,
-      inline: true
+      inline: true,
       //open:true
-      //,historyApiFallback: true
+      historyApiFallback: true
     },
     plugins: [new webpack.HotModuleReplacementPlugin()],
     module: {
