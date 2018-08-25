@@ -1,5 +1,5 @@
 {
-  "name": "vue-h51803-simpleui",
+  "name": "vue-simple-good-ui",
   "version": "1.0.0",
   "description": "",
   "main": "dist/simpleUI.js",
@@ -62,7 +62,7 @@
     "type": "git",
     "url": "git+https://github.com/pengteling/h51803-vuewebpack.git"
   },
-  "author": "",
+  "author": "~pengteling",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/pengteling/h51803-vuewebpack/issues"
