@@ -12,6 +12,10 @@ router: 机制  管理理由者
  */
 
 const routes = [
+  // {
+  //   path: '/',
+  //   redirect: '/home'
+  // },
   {
     name: 'Home',
     path: '/',
@@ -21,6 +25,11 @@ const routes = [
     // name: 'About2',
     path: '/about',
     component: About,
+    beforeEnter: (to, from, next) => {
+      // ...
+      console.log('beforeEnter')
+      next()
+    },
     children: [
       {
         path: '',
@@ -42,12 +51,30 @@ const routes = [
   {
     name: 'User',
     path: '/user',
+    // props: true,
+    // props: {
+    //   userid: 12345,
+    //   test: 'tett'
+    // },
+    props: route => {
+      return {
+        userid: route.params.userid,
+        sokey: route.query.sokey,
+        sokey2: route.query.sokey2
+      }
+    },
     component: User,
     children: [
       {
-        path: ':useid',
+        path: ':userid',
         name: 'Userwho',
-        component: {render: h => h('div', '用户某')}
+        props: true,
+        component: {
+          props: ['userid'],
+          template: `
+          <div>userid:{{userid}}</div>
+          `
+        }
       }
     ]
   },
@@ -58,6 +85,15 @@ const routes = [
       default: {render: h => h('div', 'category默认')},
       a: {render: h => h('div', 'category-a')}
     }
+  },
+  // {
+  //   path: '/',
+  //   redirect: '/b'
+  // }
+  {
+    path: '/a',
+    component: { render: (h) => h('div', 'a') },
+    alias: ['/b', '/c', '/d/c/f', '/about/aaa']
   }
 ]
 
