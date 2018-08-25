@@ -1,76 +1,39 @@
 <template>
-  <div class="container">
-    <transition :name="slider" @enter="enter">
-      <router-view></router-view>
-    </transition>
-    <router-view name="footer" class="footer"></router-view>
-  </div>
+  <div></div>
 </template>
+
 <script>
+// import axios from 'axios'
+import jsonp from 'jsonp'
 export default {
   data () {
     return {
-      slider: 'slider'
+      musicList: []
     }
   },
-  methods: {
-    enter (el, done) {
-      console.log('enter')
-      done()
-    }
-  }
+  created () {
+    // fetch('http://music.henshui.com/api/musicList.js?!234')
+    //   .then(res => res.text())
+    //   .then(res => console.log(res))
+    // axios
+    //   .get('http://music.henshui.com/api/musicList.js?!234')
+    //   .then(res => {
+    //     this.musicList = (res.data)
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error)
+    //   })
+    jsonp(
+      'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg?tpl=3&page=detail&date=2018-06-15&topid=4&type=top&song_begin=0&song_num=30&g_tk=5381&jsonpCallback=MusicJsonCallbacktoplist&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0',
+      {
+        name: 'MusicJsonCallbacktoplist'
+      },
+      (err, data) => {
+        console.log(err)
+        console.log(data)
+      }
+    )
+  },
+  mounted () {}
 }
 </script>
-
-<style lang="scss">
-html,body{
-  overflow: hidden;
-}
-ul,li{
-  list-style: none;
-  padding: 0;
-  margin:0
-}
-.container{
-  display: flex;
-  height: 100vh;
-  flex-direction: column;
-}
-.main{
-  flex:1 1 0%;
-  overflow: hidden;
-}
-.footer{
-  flex:0 0 50px;
-  background: linear-gradient(rgba(#eee,0.9), rgba(#eee,0.3))
-}
-.slider-enter-active, .slider-leave-active{
-  position: absolute;
-  transition:  all 0.5s;
-}
-.slider-enter{
-  transform: translate3d(-300px,0,0)
-}
-.slider-leave-to{
-  transform: translate3d(300px,0,0)
-}
-
-.slider2-enter-active, .slider2-leave-active{
-  position: absolute;
-  transition:  all 0.5s;
-}
-.slider2-enter{
-  transform: translate3d(300px,0,0)
-}
-.slider2-leave-to{
-  transform: translate3d(-300px,0,0)
-}
-
-// .app > div{
-//   position: absolute;
-//   width: 100%;
-// }
-body{
-  margin:0
-}
-</style>
