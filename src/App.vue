@@ -1,50 +1,51 @@
 <template>
-  <div class="app">
-    <h2>路由</h2>
-    <nav>
-      <!-- <a href="/">Home</a> -->
-      <router-link to="/">Home</router-link>
-      <!-- <router-link to="/#miaodian">Home</router-link> -->
-      <!-- <a href="/about">About</a> -->
-      <router-link to="/about">About</router-link>
-      <router-link to="/category">Category</router-link>
-
-      <!-- <a href="/user">User</a> -->
-      <router-link to="/user">User</router-link>
-      <router-link :to="{name:'User',query:{id:123}}">用户一</router-link>
-      <router-link :to="{name:'User',params:{userid:123}}">用户二</router-link>
-      <router-link to="/user/123">用户三</router-link>
-      <button @click="changUrl">编程式导航</button>
-    </nav>
-    <transition name="slider">
+  <div class="container">
+    <transition :name="slider" @enter="enter">
       <router-view></router-view>
-      <router-view name="a"></router-view>
     </transition>
-
+    <router-view name="footer" class="footer"></router-view>
   </div>
 </template>
 <script>
 export default {
-  // mounted () {
-  //   setTimeout(() => {
-  //     this.$router.push('about')
-  //   }, 3000)
-  // },
+  data () {
+    return {
+      slider: 'slider'
+    }
+  },
   methods: {
-    changUrl () {
-      // this.$router.push('user', () => {
-      //   console.log('completed')
-      // })
-      this.$router.push(
-        {path: '/user', name: 'Userwho', query: { test: 123 }, params: { userid: 456 }}
-      )
+    enter (el, done) {
+      console.log('enter')
+      done()
     }
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+html,body{
+  overflow: hidden;
+}
+ul,li{
+  list-style: none;
+  padding: 0;
+  margin:0
+}
+.container{
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+.main{
+  flex:1 1 0%;
+  overflow: hidden;
+}
+.footer{
+  flex:0 0 50px;
+  background: linear-gradient(rgba(#eee,0.9), rgba(#eee,0.3))
+}
 .slider-enter-active, .slider-leave-active{
+  position: absolute;
   transition:  all 0.5s;
 }
 .slider-enter{
@@ -53,10 +54,22 @@ export default {
 .slider-leave-to{
   transform: translate3d(300px,0,0)
 }
-.app > div{
+
+.slider2-enter-active, .slider2-leave-active{
   position: absolute;
-  width: 100%;
+  transition:  all 0.5s;
 }
+.slider2-enter{
+  transform: translate3d(300px,0,0)
+}
+.slider2-leave-to{
+  transform: translate3d(-300px,0,0)
+}
+
+// .app > div{
+//   position: absolute;
+//   width: 100%;
+// }
 body{
   margin:0
 }

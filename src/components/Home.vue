@@ -1,27 +1,13 @@
 <template>
   <div>
     <h2>首页</h2>
-    <div class="home">
-
-      <!-- <span id="miaodian">test</span> -->
-      <a name="miaodian">miaodian</a>
-    </div>
-
+    <nav>
+      <router-link :to ="{ name: 'Phone'} ">手机</router-link>
+      <router-link :to ="{ name: 'TV'} ">TV</router-link>
+      <router-link to ="/3c">家电</router-link>
+    </nav>
+    <transition name="slider">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
-<script>
-export default {
-  beforeRouteLeave (to, from, next) {
-    // ...
-    console.log('beforeRouteLeave')
-    next()
-  }
-}
-</script>
-<style>
-.home{
-  height: 2000px;
-  padding-top: 1000px;
-  background: #580;
-}
-</style>
