@@ -10,8 +10,10 @@
 </template>
 <script>
 // import uiSwitch from '@/Switch.vue'
-import '../dist/simpleUI.css'
-import { uiSwitch } from '../dist/simpleUI.js'
+// import '../dist/simpleUI.css'
+// import { uiSwitch } from '../dist/simpleUI.js'
+import 'vue-simple-good-ui/dist/simpleUI.css'
+import { uiSwitch } from 'vue-simple-good-ui'
 export default {
   components: {
     uiSwitch
