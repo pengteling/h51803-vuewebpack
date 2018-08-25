@@ -1,8 +1,8 @@
 {
-  "name": "vue-webpack",
+  "name": "vue-h51803-simpleui",
   "version": "1.0.0",
   "description": "",
-  "main": "webpack.config.js",
+  "main": "dist/simpleUI.js",
   "dependencies": {
     "axios": "^0.18.0",
     "jsonp": "^0.2.1",

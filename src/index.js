@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
+// import router from './router'
 // import App from './App6.jsx'
 // import App from './App6.vue'
 // const auth = {
@@ -31,7 +31,6 @@ import router from './router'
 /* eslint no-new: "off" */
 new Vue({
   el: '#app',
-  router,
   components: {
     App
   },
