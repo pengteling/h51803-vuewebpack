@@ -3,9 +3,22 @@ import App from './App.vue'
 import router from './router'
 // import App from './App6.jsx'
 // import App from './App6.vue'
+const auth = {
+  loggedIn: () => {
+    return true
+  }
+}
 
 router.beforeEach((to, from, next) => {
+  console.log(to)
   console.log('beforeEach')
+  // console.log(to.matched)
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    // next()
+    if (!auth.loggedIn()) {
+      next('/login')
+    }
+  }
   next()
 })
 router.beforeResolve((to, from, next) => {

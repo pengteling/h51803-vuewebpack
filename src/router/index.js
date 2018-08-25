@@ -1,8 +1,12 @@
 import Home from '@/Home.vue'
 import About from '@/About.vue'
-import User from '@/User.vue'
+// import User from '@/User.vue'
+// import Login from '@/Login.vue'
 import Router from 'vue-router'
 import Vue from 'vue'
+
+const User = () => import(/* webpackChunkName: "user" */ '@/User.vue')
+const Login = () => import(/* webpackChunkName: "user" */ '@/Login.vue')
 
 Vue.use(Router)
 /*
@@ -51,6 +55,7 @@ const routes = [
   {
     name: 'User',
     path: '/user',
+    meta: { requiresAuth: true },
     // props: true,
     // props: {
     //   userid: 12345,
@@ -68,6 +73,7 @@ const routes = [
       {
         path: ':userid',
         name: 'Userwho',
+        meta: { requiresAuth: true },
         props: true,
         component: {
           props: ['userid'],
@@ -94,10 +100,31 @@ const routes = [
     path: '/a',
     component: { render: (h) => h('div', 'a') },
     alias: ['/b', '/c', '/d/c/f', '/about/aaa']
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   }
 ]
 
 export default new Router({
   mode: 'history',
-  routes
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+    // return {
+    //   x: 0,
+    //   y: 44
+    // }
+    // if (savedPosition) {
+    //   console.log(savedPosition)
+    //   return savedPosition
+    // }
+    if (to.hash) {
+      console.log(to.hash)
+      return {
+        selector: to.hash
+      }
+    }
+  }
 })
