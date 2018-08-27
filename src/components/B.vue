@@ -1,17 +1,15 @@
 <template>
   <div>
-    <h1>
-      App
-    </h1>
-    <A></A>
+    <h2>B组件</h2>
+    <p>{{ $store.state.msg }}</p>
+    <C></C>
   </div>
 </template>
-
 <script>
-import A from '@/A'
+import C from '@/C'
 export default {
   components: {
-    A
+    C
   }
 }
 </script>
