@@ -6,10 +6,17 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 import C from '@/C'
 export default {
   components: {
     C
+  },
+  computed: {
+    ...mapState(['users']),
+    secUser () {
+      return this.users[1]
+    }
   }
 }
 </script>
