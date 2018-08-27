@@ -2,15 +2,17 @@
   <div>
     <h2>A组件</h2>
     <p>
-      {{ $store.state.msg }}
+      <!-- {{ $store.state.msg }} -->
     </p>
     <p>
       <!-- {{ msg }}
       {{ count }} -->
-      {{ count }} <br>
+      <!-- {{ count }} <br>
       {{ this.$store.getters.secUser }}
       <br>
-      {{ secUser }}
+      {{ secUser }} -->
+      <br>
+      {{ obj }}
     </p>
     <B></B>
   </div>
@@ -24,6 +26,7 @@ export default {
   },
   // computed: mapState(['msg', 'count', 'users']),
   computed: {
+    ...mapState(['obj']),
     ...mapState({
       count: 'count',
       msg2: 'msg', // this.$store.sate.msg
@@ -58,9 +61,11 @@ export default {
     // }
   },
   methods: {
-    ...mapMutations(['addCount']),
+    ...mapMutations(['addCount', 'addCountStep']),
     ...mapMutations({
-      addCountComp: 'addCount'
+      addCountComp: 'addCount',
+      changeObj: 'changeObj'
+
     })
   },
   // computed: {
@@ -81,12 +86,20 @@ export default {
     // console.log(this.$store._mutations.addCount[0]())
     // this.$store
     // console.log(this.$store.getters.secUser)
-    setInterval(() =>
-      // this.$store.commit('addCount')
-      // this.addCount()
-      this.addCountComp()
-      , 1000
-    )
+    // setInterval(() =>
+    //   // this.$store.commit('addCount')
+    //   // this.addCount()
+    //   // this.addCountComp()
+    //   // this.addCountStep({ step: 3 })
+    //   // this.$store.commit('addCountStep', { step: 4 })
+    //   this.$store.commit({
+    //     type: 'addCountStep',
+    //     step: 4
+    //   })
+    //   , 1000
+    // )
+
+    this.changeObj()
   }
 }
 </script>
