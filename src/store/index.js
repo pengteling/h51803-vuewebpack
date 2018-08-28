@@ -3,6 +3,7 @@ import Vue from 'vue'
 import axios from 'axios'
 import { ADD_COUNT_TYPE } from './mutations-types'
 // import * as types from './mutations-types'
+import moduleA from './modules/moduleA'
 Vue.use(vuex)
 
 export default new vuex.Store({
@@ -60,11 +61,14 @@ export default new vuex.Store({
   actions: {
     loadData ({ commit }, payload) {
       console.log(payload)
-      axios.get('http://music.henshui.com/api/musicList.js?!234')
+      return axios.get('http://music.henshui.com/api/musicList.js?!234')
         .then(res => {
           console.log(res)
           commit('changeMusicList', res.data)
         })
     }
+  },
+  modules: {
+    moduleA: moduleA
   }
 })
