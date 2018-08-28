@@ -1,74 +1,55 @@
 import vuex from 'vuex'
 import Vue from 'vue'
-import axios from 'axios'
-import { ADD_COUNT_TYPE } from './mutations-types'
-// import * as types from './mutations-types'
-import moduleA from './modules/moduleA'
 Vue.use(vuex)
 
 export default new vuex.Store({
+  strict: process.env.NODE_ENV !== 'production',
   state: {
-    msg: 'hi,vue.js!',
-    count: 0,
-    users: [
-      {id: 1, name: 'zs'},
-      {id: 2, name: 'ls'},
-      {id: 3, name: 'ww'}
-    ],
-    obj: {
-      id: 1,
-      name: 'zs'
-    },
-    musicList: ''
+    todos: [],
+    filter: 'All'
   },
   getters: {
-    secUser (state) {
-      return state.users[1]
+    leftItemsCount (state) {
+      return state.todos.reduce((t, v) => v.isCompleted ? t : t + 1, 0)
     },
-    // payload :{ id:0}
-    userWho: state => (payload) => {
-      return state.users[payload.id]
+    todosView (state) {
+      if (state.filter === 'All') {
+        return state.todos
+      } else if (state.filter === 'Active') {
+        return state.todos.filter(v => !v.isCompleted)
+      } else {
+        return state.todos.filter(v => v.isCompleted)
+      }
+    },
+    isHaveCompleted (state) {
+      return state.todos.some(v => v.isCompleted)
     }
   },
   mutations: {
-    // 事件类型
-    addCount (state) {
-      state.count++
+    addTodo (state, todo) {
+      state.todos.unshift(todo)
     },
-    // payload: { step:3 }
-    // addCountStep (state, num) {
-    //   state.count += num
-    // }
-    addCountStep (state, payload) {
-      state.count += payload.step
+    deleteTodo (state, todo) {
+      state.todos = state.todos.filter(v => v !== todo)
     },
-    changeObj (state) {
-      // state.obj.sex = 'male'
-      // state.obj = {...state.obj, sex: 'male'}
-      state.obj = Object.assign({}, state.obj, {sex: 'male'})
+    toggleFilter (state, filter) {
+      state.filter = filter
     },
-    [ADD_COUNT_TYPE] (state) {
-      state.count++
+    clearCompleted (state) {
+      state.todos = state.todos.filter(v => v.isCompleted === false)
     },
-    // 课堂中演示bug 修正如下
-    // [types.ADD_COUNT_TYPE] (state) {
-    //   state.count++
-    // },
-    changeMusicList (state, val) {
-      state.musicList = val
+    updateTodo (state, todo) {
+      state.todos = state.todos.map(item => {
+        if (todo === item) {
+          return Object.assign({}, item, {isCompleted: !item.isCompleted})
+          // return {...todo,  isCompleted:!todo.isCompleted }
+        } else {
+          return item
+        }
+      })
+    },
+    initTodos (state, todos) {
+      state.todos = todos
     }
-  },
-  actions: {
-    loadData ({ commit }, payload) {
-      console.log(payload)
-      return axios.get('http://music.henshui.com/api/musicList.js?!234')
-        .then(res => {
-          console.log(res)
-          commit('changeMusicList', res.data)
-        })
-    }
-  },
-  modules: {
-    moduleA: moduleA
   }
 })
