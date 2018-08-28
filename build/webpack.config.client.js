@@ -74,14 +74,21 @@ if (isDev) {
 } else {
   //生产模式
   config = merge(baseConfig, defaultOptions, {
-    entry: path.resolve(__dirname, '../src/ui.js'),
+    entry: {
+      app: path.resolve(__dirname, "../src/index.js"),
+      vendor: ["vue"]
+    },
     output: {
-      filename: "simpleUI.js",
-      libraryTarget: 'umd',
-      library: 'simpleUI'
+      filename: "[name]-[chunkhash:8].js"
     },
     plugins: [
-      new ExtractTextWebpackPlugin("simpleUI.css")
+      new ExtractTextWebpackPlugin("style-[contentHash:8].css"),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: "vendor"
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: "runtime"
+      })
     ],
     module: {
       rules: [
