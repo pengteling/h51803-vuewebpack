@@ -1,4 +1,6 @@
 export const GET_DURATION = 'GET_DURATION'
 export const GET_CURRENTTIME = 'GET_CURRENTTIME'
+export const CHANGE_VOLUME = 'CHANGE_VOLUME'
+export const CHANGE_PROGRESS = 'CHANGE_PROGRESS'
 // export const ADD_COUNT_STEP = 'ADD_COUNT_STEP'
 // export const ADD_COUNT = 'ADD_COUNT'
