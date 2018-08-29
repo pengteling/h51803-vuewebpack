@@ -12,5 +12,8 @@ export default {
   [Types.CHANGE_PROGRESS] (state, progress) {
     state.changeTime = progress * state.duration
     // state.currentTime = progress * state.duration
+  },
+  [Types.PLAY_PAUSE] (state) {
+    state.paused = !state.paused
   }
 }

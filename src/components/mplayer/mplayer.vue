@@ -33,6 +33,15 @@ export default {
       // if (Math.abs(val - oldVal) >= 1) {
       //   this.audio.currentTime = val
       // }
+    },
+    paused (val) {
+      // this.audio
+      if (val) {
+        // if(this.audio.paused)
+        this.audio.pause()
+      } else {
+        this.audio.play()
+      }
     }
   },
   mounted () {

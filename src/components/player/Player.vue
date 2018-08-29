@@ -26,11 +26,11 @@
           <Progress :value="currentPercentAbsoulte" @changeProgress="changeProgress"></Progress>
         </div>
         <div class="mt35 row">
-          <div><i class="icon prev"></i><i class="icon ml20 icon ml20 pause"></i><i class="icon next ml20"></i></div>
+          <div><i class="icon prev" @click="PREV_NEXT('prev')"></i><i class="icon ml20 icon ml20 " :class="paused?'play':'pause'" @click="PLAY_PAUSE"></i><i class="icon next ml20" @click="PREV_NEXT('next')"></i></div>
           <div class="-col-auto"><i class="icon repeat-cycle"></i></div>
         </div>
       </div>
-      <div class="-col-auto cover"><a href="#/lrc" class=""><img src="http://oj4t8z2d5.bkt.clouddn.com/%E9%AD%94%E9%AC%BC%E4%B8%AD%E7%9A%84%E5%A4%A9%E4%BD%BF.jpg" alt="天使中的魔鬼" class="play"></a></div>
+      <div class="-col-auto cover"><a href="#/lrc" class=""><img :src="currentItem.cover" :alt="currentItem.title" :class="paused? 'pause':'play'"></a></div>
     </div>
   </div>
 </template>
@@ -43,12 +43,13 @@ export default {
     Progress
   },
   computed: {
-    ...mapState('player', ['volume']),
+    ...mapState('player', ['volume', 'paused']),
     ...mapGetters('list', ['currentItem']),
     ...mapGetters('player', ['leftTime', 'currentPercentAbsoulte'])
   },
   methods: {
-    ...mapMutations('player', ['CHANGE_VOLUME', 'CHANGE_PROGRESS']),
+    ...mapMutations('player', ['CHANGE_VOLUME', 'CHANGE_PROGRESS', 'PLAY_PAUSE']),
+    ...mapMutations('list', ['PREV_NEXT']),
     changeVolume (volume) {
       // console.log('changeVolume', volume)
       this.CHANGE_VOLUME(volume * 100)
