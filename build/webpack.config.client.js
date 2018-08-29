@@ -48,9 +48,9 @@ if (isDev) {
             {
               loader: "css-loader",
               options: {
-                modules: true,
-                // camelCase: true
-                localIdentName: "[path]-[name]-[hash:base64:5]",
+                // modules: true,
+                // // camelCase: true
+                // localIdentName: "[path]-[name]-[hash:base64:5]",
                 sourceMap: true
               }
             },
