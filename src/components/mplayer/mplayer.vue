@@ -42,6 +42,9 @@ export default {
       } else {
         this.audio.play()
       }
+    },
+    volume (val) {
+      this.audio.volume = val / 100
     }
   },
   mounted () {
