@@ -3,5 +3,5 @@ export default {
   duration: 0,
   volume: 80,
   paused: false,
-  changeTime: 0
+  changeTime: undefined
 }

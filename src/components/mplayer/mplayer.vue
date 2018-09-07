@@ -4,6 +4,7 @@
     ref="audio"
     @loadedmetadata="loadedmetadata"
     @timeupdate="timeupdate"
+    @ended="ended"
   >
   </audio>
 </template>
@@ -15,16 +16,25 @@ export default {
       return this.$refs.audio
     },
     ...mapState('player', ['paused', 'volume', 'changeTime']),
+    ...mapState('list', ['repeatType']),
     ...mapGetters('list', ['currentItem'])
   },
   methods: {
-    ...mapMutations('player', ['GET_DURATION', 'GET_CURRENTTIME']),
+    ...mapMutations('player', ['GET_DURATION', 'GET_CURRENTTIME', 'CHANGE_PROGRESS']),
+    ...mapMutations('list', ['PREV_NEXT']),
     loadedmetadata () {
       console.log('loadedmetadata')
       this.GET_DURATION(this.audio.duration)
     },
     timeupdate () {
       this.GET_CURRENTTIME(this.audio.currentTime)
+    },
+    ended () {
+      if (this.repeatType !== 'once') {
+        this.PREV_NEXT('next')
+      } else {
+        this.CHANGE_PROGRESS(0)
+      }
     }
   },
   watch: {

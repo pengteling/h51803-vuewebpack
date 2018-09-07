@@ -27,10 +27,14 @@
         </div>
         <div class="mt35 row">
           <div><i class="icon prev" @click="PREV_NEXT('prev')"></i><i class="icon ml20 icon ml20 " :class="paused?'play':'pause'" @click="PLAY_PAUSE"></i><i class="icon next ml20" @click="PREV_NEXT('next')"></i></div>
-          <div class="-col-auto"><i class="icon repeat-cycle"></i></div>
+          <div class="-col-auto"><i :class="`icon repeat-${repeatType}`" @click="CHANGE_REPEAT_TYPE"></i></div>
         </div>
       </div>
-      <div class="-col-auto cover"><a href="#/lrc" class=""><img :src="currentItem.cover" :alt="currentItem.title" :class="paused? 'pause':'play'"></a></div>
+      <div class="-col-auto cover">
+        <router-link :to="{name:'Lrc'}">
+          <img :src="currentItem.cover" :alt="currentItem.title" :class="paused? 'pause':'play'">
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -44,12 +48,13 @@ export default {
   },
   computed: {
     ...mapState('player', ['volume', 'paused']),
+    ...mapState('list', ['repeatType']),
     ...mapGetters('list', ['currentItem']),
     ...mapGetters('player', ['leftTime', 'currentPercentAbsoulte'])
   },
   methods: {
     ...mapMutations('player', ['CHANGE_VOLUME', 'CHANGE_PROGRESS', 'PLAY_PAUSE']),
-    ...mapMutations('list', ['PREV_NEXT']),
+    ...mapMutations('list', ['PREV_NEXT', 'CHANGE_REPEAT_TYPE']),
     changeVolume (volume) {
       // console.log('changeVolume', volume)
       this.CHANGE_VOLUME(volume * 100)
