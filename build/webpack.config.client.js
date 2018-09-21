@@ -6,6 +6,8 @@ const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
 // console.log(isDev)
 const merge = require("webpack-merge");
 const baseConfig = require("./webpack.config.base");
+const preRender = require("prerender-spa-plugin")
+const Renderer = preRender.PuppeteerRenderer
 
 let config;
 const defaultOptions = {
@@ -20,6 +22,17 @@ const defaultOptions = {
           ? JSON.stringify("development")
           : JSON.stringify("production")
       }
+    }),
+    new preRender({
+      staticDir: path.resolve(__dirname,"../dist"),
+      routes:['/','/list','/lrc'],
+      renderer: new Renderer({
+        inject:{
+
+        },
+        headless:false,
+        renderAfterDocumentEvent: 'render-event'
+      })
     })
   ]
 };
